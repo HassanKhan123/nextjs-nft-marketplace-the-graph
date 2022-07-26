@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 8001",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "frp": "cd frp && ./frpc -c frpc.ini",
+    "moralis:sync": "moralis-admin-cli connect-local-devchain --chain hardhat --moralisSubdomain 6np96bz0sxca.usemoralis.com --frpcPath ./frp/frpc"
   },
   "dependencies": {
     "@web3uikit/core": "^0.1.2",
