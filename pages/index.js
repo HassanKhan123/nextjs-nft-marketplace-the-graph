@@ -24,14 +24,13 @@ export default function Home() {
               const { price, nftAddress, tokenId, marketplaceAddress, seller } =
                 nft.attributes;
               return (
-                <div className="m-5">
+                <div className="m-5" key={`${nftAddress}${tokenId}`}>
                   <NFTBox
                     price={price}
                     nftAddress={nftAddress}
                     tokenId={tokenId}
                     marketplaceAddress={marketplaceAddress}
                     seller={seller}
-                    key={`${nftAddress}${tokenId}`}
                   />
                 </div>
               );
