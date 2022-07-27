@@ -6,6 +6,7 @@ import { ethers } from "ethers";
 
 import nftMarketplaceAbi from "../constants/NftMarketplace.json";
 import nftAbi from "../constants/BasicNft.json";
+import UpdateListingModal from "./UpdateListingModal";
 
 const truncateStr = (fullStr, strLen) => {
   if (fullStr.length <= strLen) return fullStr;
@@ -27,6 +28,8 @@ const NFTBox = ({ price, nftAddress, tokenId, marketplaceAddress, seller }) => {
   const [imageURI, setImageURI] = useState("");
   const [tokenName, setTokenName] = useState("");
   const [tokenDescription, setTokenDescription] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const hideModal = () => setShowModal(false);
 
   const { runContractFunction: getTokenURI } = useWeb3Contract({
     abi: nftAbi,
@@ -70,22 +73,30 @@ const NFTBox = ({ price, nftAddress, tokenId, marketplaceAddress, seller }) => {
     ? "you"
     : truncateStr(seller || "", 15);
 
+  const handleCardClick = () => {
+    isOwnedByUser ? setShowModal(true) : console.log("buy");
+    //   buyItem({
+    //       onError: error => console.log(error),
+    //       onSuccess: handleBuyItemSuccess,
+    //     });
+  };
+
   return (
     <div>
       <div>
         {imageURI ? (
           <div>
-            {/* <UpdateListingModal
+            <UpdateListingModal
               isVisible={showModal}
               tokenId={tokenId}
               marketplaceAddress={marketplaceAddress}
               nftAddress={nftAddress}
               onClose={hideModal}
-            /> */}
+            />
             <Card
               title={tokenName}
               description={tokenDescription}
-              //   onClick={handleCardClick}
+              onClick={handleCardClick}
             >
               <div className="p-2">
                 <div className="flex flex-col items-end gap-2">

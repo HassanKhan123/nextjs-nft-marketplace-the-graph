@@ -24,7 +24,7 @@ export default function Home() {
               const { price, nftAddress, tokenId, marketplaceAddress, seller } =
                 nft.attributes;
               return (
-                <div>
+                <div className="m-5">
                   <NFTBox
                     price={price}
                     nftAddress={nftAddress}
