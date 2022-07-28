@@ -10,6 +10,8 @@ export const GET_ACTIVE_ITEM = gql`
       buyer
       seller
       nftAddress
+      tokenId
+      price
     }
   }
 `;

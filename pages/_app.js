@@ -8,7 +8,7 @@ import "../styles/globals.css";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: "https://api.studio.thegraph.com/query/31828/nft-marketplace/v0.0.2",
+  uri: "https://api.studio.thegraph.com/query/31828/nft-marketplace/v0.0.3",
 });
 
 function MyApp({ Component, pageProps }) {

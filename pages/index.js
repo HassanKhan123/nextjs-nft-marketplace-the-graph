@@ -10,19 +10,20 @@ export default function Home() {
   const chainString = chainId ? parseInt(chainId).toString() : "31337";
   const marketplaceAddress = networkMapping[chainString].NftMarketplace[0];
   const { data: listedNfts, loading, error } = useQuery(GET_ACTIVE_ITEM);
+  console.log(listedNfts, loading, error);
 
   return (
     <div className="container mx-auto">
       <h1 className="py-4 px-4 font-bold text-2xl">Recently Listed</h1>
       <div className="flex flex-wrap">
         {isWeb3Enabled ? (
-          loading || !listedNfts ? (
+          loading ? (
             <div>Loading...</div>
           ) : (
             listedNfts.activeItems.map(nft => {
-              const { price, nftAddress, tokenId, seller } = nft;
+              const { price, nftAddress, tokenId, seller, id } = nft;
               return (
-                <div className="m-5" key={`${nftAddress}${tokenId}`}>
+                <div className="m-5" key={id}>
                   <NFTBox
                     price={price}
                     nftAddress={nftAddress}
